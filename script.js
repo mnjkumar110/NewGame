@@ -19,17 +19,15 @@ document.querySelector('.check').addEventListener('click', function () {
       highscore = score;
       document.querySelector('.highscore').textContent = highscore;
     }
-  } else if (guess > selectscore) {
+  } else if (guess !== selectscore) {
     if (score > 1) {
-      document.querySelector('.message').textContent = 'Value too High';
+      document.querySelector('.message').textContent =
+        guess > selectscore ? 'Value too High' : 'Value too low';
       score--;
       document.querySelector('.score').textContent = score;
-    }
-  } else if (guess < selectscore) {
-    if (score > 1) {
-      document.querySelector('.message').textContent = 'Value too Low';
-      score--;
-      document.querySelector('.score').textContent = score;
+    } else {
+      document.querySelector('.message').textContent = 'You lost the game';
+      document.querySelector('.score').textContent = 0;
     }
   }
 });
